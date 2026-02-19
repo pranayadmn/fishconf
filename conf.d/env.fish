@@ -22,7 +22,6 @@ if not set -q EDITOR
 end
 
 # Set browser on macOS.
-switch $OSTYPE
-    case darwin
-        set -q BROWSER || set -Ux BROWSER open
+if string match -q 'darwin*' $OSTYPE
+    set -q BROWSER || set -Ux BROWSER open
 end
