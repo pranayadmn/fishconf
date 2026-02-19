@@ -13,16 +13,16 @@ set -q LESS_TERMCAP_ue; or set -Ux LESS_TERMCAP_ue (set_color normal)
 set -q PAGER; or set -Ux PAGER less
 
 if not set -q EDITOR
-    switch (uname)
-        case Darwin
+    switch $OSTYPE
+        case darwin
             set -Ux EDITOR hx
-        case Linux
+        case linux
             set -Ux EDITOR helix
     end
 end
 
 # Set browser on macOS.
-switch (uname)
-    case Darwin
+switch $OSTYPE
+    case darwin
         set -q BROWSER; or set -Ux BROWSER open
 end

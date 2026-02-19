@@ -1,9 +1,9 @@
 # Set editor variables.
 if test "$ZED_TERM" = true
-    switch (uname)
-        case Darwin
+    switch $OSTYPE
+        case darwin
             set -gx VISUAL "zed --wait"
-        case Linux
+        case linux
             set -gx VISUAL "zeditor --wait"
     end
 end
