@@ -11,7 +11,15 @@ set -q LESS_TERMCAP_ue; or set -Ux LESS_TERMCAP_ue (set_color normal)
 
 # Set editor variables.
 set -q PAGER; or set -Ux PAGER less
-set -q EDITOR; or set -Ux EDITOR hx
+
+if not set -q EDITOR
+    switch (uname)
+        case Darwin
+            set -Ux EDITOR hx
+        case Linux
+            set -Ux EDITOR helix
+    end
+end
 
 # Set browser on macOS.
 switch (uname)
