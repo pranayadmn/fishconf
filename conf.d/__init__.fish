@@ -30,8 +30,9 @@ if not set -q __fish_cache_dir
 end
 test -d $__fish_cache_dir || mkdir -p $__fish_cache_dir
 
-# Remove expired cache files.
-find $__fish_cache_dir -name '*.fish' -type f -mmin +1200 -delete
+# Remove expired cache files in the background.
+find $__fish_cache_dir -name '*.fish' -type f -mmin +1200 -delete &
+disown
 
 # Other vars
 set -g OSTYPE (uname | string lower)
